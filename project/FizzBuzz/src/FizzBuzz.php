@@ -1,17 +1,13 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App;
 
 final class FizzBuzz
 {
-    private const int FIZZ_VALUE = 3;
-    private const int BUZZ_VALUE = 5;
-
-    private const int FiZZBUZZ_DENOMINATOR = 15;
-
     public function __construct(private int $limit)
     {
-
     }
 
     public function changeLimit(int $limit): void
@@ -19,43 +15,35 @@ final class FizzBuzz
         $this->limit = $limit;
     }
 
-    private function getFizzBuzzString(int $number): string
+    public function getLimit(): int
     {
-        if ($this->isFizzBuzz($number)) {
-            return "FizzBuzz";
-        }
-
-        if ($this->isFizz($number)) {
-            return "Fizz";
-        }
-
-        if ($this->isBuzz($number)) {
-            return "Buzz";
-        }
-
-        return (string) $number;
+        return $this->limit;
     }
 
     public function run(): string
     {
         $result = "";
-        for ($i = 1; $i <= $this->limit; $i++) {
+        for ($i = 1; $i <= $this->limit; ++$i) {
             $result .=  $this->getFizzBuzzString($i);
         }
 
         return $result;
     }
 
-    private function isFizz(int $number): bool
+    private function getFizzBuzzString(int $number): string
     {
-        return $number % self::FIZZ_VALUE === 0;
-    }
-    private function isBuzz(int $number): bool
-    {
-        return $number % self::BUZZ_VALUE === 0;
-    }
-    private function isFizzBuzz(int $number): bool
-    {
-        return $number % self::FiZZBUZZ_DENOMINATOR === 0;
+        if (FizzBuzzEnum::isFizzBuzz($number)) {
+            return "FizzBuzz";
+        }
+
+        if (FizzBuzzEnum::isFizz($number)) {
+            return "Fizz";
+        }
+
+        if (FizzBuzzEnum::isBuzz($number)) {
+            return "Buzz";
+        }
+
+        return (string) $number;
     }
 }
