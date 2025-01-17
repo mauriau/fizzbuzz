@@ -1,0 +1,1 @@
+{"version":1,"defects":{"App\\Tests\\FizzBuzzTest::testItBuzz":7,"App\\Tests\\FizzBuzzTest::testItFizz":5},"times":{"App\\Tests\\FizzBuzzTest::testItBuzz":0.004,"App\\Tests\\FizzBuzzTest::testItFizz":0.004}}
